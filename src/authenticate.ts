@@ -6,7 +6,7 @@ interface User {
 
 function authenticate(token: string): void {
     // Call your /users/me route to validate token
-    fetch('https://my-server.com/users/me', {
+    fetch('https://miniature-space-parakeet-q7q69q4q5jpqh6pq-8080.app.github.dev/gitauto/users/me', {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${token}` }
     })

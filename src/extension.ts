@@ -17,11 +17,11 @@ export function activate(context: vscode.ExtensionContext) {
 
 	let login = vscode.commands.registerCommand('gitauto.connect', () => {
 		connect(context);
-	})
+	});
 
 	let generateCommitCommand = vscode.commands.registerCommand('gitauto.generateCommit', () => {
 		generateCommit(context);
-	})
+	});
 
 	//let gitautoAll = vscode.commands.registerCommand('gitauto.gitauto', () => {
 	//	gitautoAll(context);
