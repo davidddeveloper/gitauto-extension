@@ -1,35 +1,26 @@
-# gitauto README
+# gitauto
 
-This is the README for your extension "gitauto". After writing up a brief description, we recommend including the following sections.
+Optimize your git workflows. Create intuitive logical and scoped commit of you working branches.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+  ### generate commit
+  The generate commit messsge command generates a commit message which you can copy. It generates a  commit message, add the modified files and commit the changes. It does all of this on file by file basis.
+  So if their are five modified changes. It loops over each of them one by one add them individual (git add) and generates a commit message for each (git commit). So if you have work for a long time on you codebase with hundreds of changes leave it to gitauto to work out commiting for you.
 
-For example if there is an image subfolder under your extension project workspace:
+![Generate commit message](images/gitauto-feature-1.png)
 
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+  ### git push
+  The push latest changes command push the latest commited changes.
+  ![Generate commit message](images/gitauto-feature-2.png)
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Make sure to setup your repository.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+This is just an MVP - so no settings yet.
 
 ## Release Notes
 
@@ -37,35 +28,11 @@ Users appreciate release notes as you update your extension.
 
 ### 1.0.0
 
-Initial release of ...
+Initial release of gitauto
+- git add
+- git commit
+- git push
 
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+## Future improvement we are considering
+  - If there are hundreds of changes to a file git auto with commit the changes logically - meaning changes by changes. This could mean that we would need to add a button or something in the codebase on a specific code block of changes that the user can click on to commit that part of the change.
+  - Next is contextual understanding. Commiting on a global scopped.
