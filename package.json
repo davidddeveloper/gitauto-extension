@@ -33,6 +33,10 @@
       {
         "command": "gitauto.gitauto",
         "title": "Add, Generate Commit and Push"
+      },
+      {
+        "command": "gitauto.gitautoPush",
+        "title": "Push latest changes"
       }]
   },
   "scripts": {

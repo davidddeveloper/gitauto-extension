@@ -1,7 +1,12 @@
 import * as vscode from 'vscode';
-
+const setGitConfig = require('./helpers/setGitConfig');
 interface Data {
     token: string;
+}
+
+interface User {
+    name: string;
+    email: string;
 }
 
 function connect(context: vscode.ExtensionContext) {
@@ -16,6 +21,14 @@ function connect(context: vscode.ExtensionContext) {
                 .then(data => {
                     if (data.token) {
                         context.globalState.update('jwtToken', data.token);
+                        fetch('https://miniature-space-parakeet-q7q69q4q5jpqh6pq-8080.app.github.dev/gitauto/users/me', {
+                            method: 'GET',
+                            headers: { 'Authorization': `Bearer ${data.token}` }
+                        })
+                        .then(response => response.json() as Promise<User>)
+                        .then(user => {
+                            setGitConfig(user.name, email);
+                        });
                         vscode.window.showInformationMessage('Connected successfully!');
                     } else {
                         vscode.window.showErrorMessage('Connection failed', data.token);
