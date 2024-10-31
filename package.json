@@ -1,6 +1,11 @@
 {
   "name": "gitauto",
   "displayName": "gitauto",
+  "publisher": "davidddeveloper",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidddeveloper/gitauto-extension.git"
+  },
   "description": "Optimize your git workflows. Create intuitive and logically scoped commit of you working tree",
   "version": "0.0.1",
   "engines": {
