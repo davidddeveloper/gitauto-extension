@@ -35,7 +35,7 @@
         "title": "Add, Generate Commit and Push"
       },
       {
-        "command": "gitauto.gitautoPush",
+        "command": "gitauto.gitPush",
         "title": "Push latest changes"
       }]
   },
