@@ -2,7 +2,6 @@ import * as vscode from 'vscode';
 
 const repo = require('./getRepo');
 const outputChannel = vscode.window.createOutputChannel('My Extension');
-const setGitConfig = require('./helpers/setGitConfig');
 
 // Log messages using the output channel
 
@@ -26,13 +25,10 @@ function generateCommit(context: vscode.ExtensionContext) {
     // Fetch the git status and diff (example shown, but you can fetch it based on your extension setup)
     //vscode.window.showErrorMessage(`Please log in first. ${repo}`);
     const status = repo.state.workingTreeChanges;
-    vscode.window.showErrorMessage(`status. ${status}`);
-    outputChannel.appendLine('Repository: ' + repo.rootUri.toString());
     
     for (const change of status) {
         const fileUri = change.uri;
         const fileName = fileUri.fsPath;
-    vscode.window.showErrorMessage(`fileUri. ${fileUri} --> ${fileName}`);
 
         // Get the diff for each specific file
         repo.diffWithHEAD(fileName).then((fileDiff: string) => {
@@ -61,8 +57,7 @@ function generateCommit(context: vscode.ExtensionContext) {
                     // 3. Git commit -m commit messageG
                     repo.add([fileName]).then(() => {
                         vscode.window.showInformationMessage('File added successfully!');
-                        
-                        setGitConfig('David', 'yHk9H@example.com');
+
                         return repo.commit(data.message).then(() => {
                             vscode.window.showInformationMessage('Commit created successfully!');
                         }).catch((error: Error) => {
