@@ -19,7 +19,7 @@ export function activate(context: vscode.ExtensionContext) {
 	vscode.window.registerUriHandler({
 		handleUri(uri: vscode.Uri) {
 		  const token = uri.query.split('=')[1]; // Extract token from the query
-		  vscode.window.showInformationMessage('this is the token', token)
+		  vscode.window.showInformationMessage('this is the token', token);
 		  if (token) {
 			// Store the token securely using VSCode's secret storage API
 			context.globalState.update('jwtToken', token);
