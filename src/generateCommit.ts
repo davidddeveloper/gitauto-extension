@@ -1,7 +1,6 @@
 import * as vscode from 'vscode';
 
 const repo = require('./getRepo');
-const outputChannel = vscode.window.createOutputChannel('My Extension');
 
 // Log messages using the output channel
 
@@ -32,7 +31,7 @@ function generateCommit(context: vscode.ExtensionContext) {
 
         // Get the diff for each specific file
         repo.diffWithHEAD(fileName).then((fileDiff: string) => {
-            vscode.window.showErrorMessage(`fileDiff. ${fileDiff}`);
+            //vscode.window.showInformationMessage(`fileDiff: ${fileDiff}`);
             fetch('https://gitauto.davidconteh.engineer/generate-commit-msg', {
                 method: 'POST',
                 headers: { 
@@ -56,11 +55,6 @@ function generateCommit(context: vscode.ExtensionContext) {
                             vscode.window.showInformationMessage('Commit message copied to clipboard!');
                         }
                     });
-
-                    // TODO:
-                    // 1. Copy commit message to clipboard
-                    // 2. Git add filename
-                    // 3. Git commit -m commit messageG
                     repo.add([fileName]).then(() => {
                         vscode.window.showInformationMessage('File added successfully!');
 
@@ -84,7 +78,7 @@ function generateCommit(context: vscode.ExtensionContext) {
 
     } 
     if (status.length === 0) {
-        vscode.window.showInformationMessage('No changes in the working tree.');
+        vscode.window.showInformationMessage('No changes in the working tree. Working tree clean.');
     }
 }
 

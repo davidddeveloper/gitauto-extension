@@ -6,9 +6,37 @@ const connect = require('./connect');
 const generateCommit = require('./generateCommit');
 const gitPush = require('./push');
 const gitautoAll = require('./gitautoAll');
+const setGitConfig = require('./helpers/setGitConfig');
+interface User {
+    username: string;
+    email: string;
+}
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+	vscode.window.showInformationMessage("gitauto extension activated!");
+	vscode.window.registerUriHandler({
+		handleUri(uri: vscode.Uri) {
+		  const token = uri.query.split('=')[1]; // Extract token from the query
+		  vscode.window.showInformationMessage('this is the token', token)
+		  if (token) {
+			// Store the token securely using VSCode's secret storage API
+			context.globalState.update('jwtToken', token);
+			fetch('https://gitauto.davidconteh.engineer/users/me', {
+				method: 'GET',
+				headers: { 'x-token': token }
+			})
+			.then(response => response.json() as Promise<User>)
+			.then(user => {
+				setGitConfig(user.username, user.email);
+				vscode.window.showInformationMessage(`Welcome back, ${user.username}!`);
+			});
+		  } else {
+			vscode.window.showWarningMessage('No token found in the URI.');
+		  }
+		}
+	  });
 
 	const jwtToken = context.globalState.get('jwtToken');
 

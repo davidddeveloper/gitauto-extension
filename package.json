@@ -15,6 +15,7 @@
     "Other"
   ],
   "activationEvents": [
+    "onUri"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -42,7 +43,14 @@
       {
         "command": "gitauto.gitPush",
         "title": "Push latest changes"
-      }]
+      }],
+      "authentication": {
+        "uriHandlers": [
+          {
+            "scheme": "vscode"
+          }
+        ]
+      }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

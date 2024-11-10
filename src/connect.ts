@@ -5,12 +5,11 @@ interface Data {
 }
 
 interface User {
-    name: string;
+    username: string;
     email: string;
 }
 
 function connect(context: vscode.ExtensionContext) {
-    vscode.window.showInformationMessage("Hello World!")
     vscode.window.showInputBox({ prompt: 'Enter your email' }).then(email => {
         vscode.window.showInputBox({ prompt: 'Enter your password', password: true }).then(password => {
             if (email && password) {
@@ -28,9 +27,9 @@ function connect(context: vscode.ExtensionContext) {
                         })
                         .then(response => response.json() as Promise<User>)
                         .then(user => {
-                            setGitConfig(user.name, email);
+                            setGitConfig(user.username, email);
+                            vscode.window.showInformationMessage(`Welcome back ${user.username}!`);
                         });
-                        vscode.window.showInformationMessage('Connected successfully!');
                     } else {
                         vscode.window.showErrorMessage('Connection failed', data.token);
                     }
