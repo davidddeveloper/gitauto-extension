@@ -1,6 +1,6 @@
 # gitauto
 
-Optimize your git workflows. Create intuitive logical and scoped commit of you working branches.
+Optimize your git workflows. Create intuitive logical and scoped commit of you working branches. https://gitauto.davidconteh.engineer
 
 ## Features
 
@@ -33,6 +33,11 @@ Initial release of gitauto
 - git commit
 - git push
 
+### 1.0.1
+  - handle uri to login from the website
+
 ## Future improvement we are considering
   - If there are hundreds of changes to a file git auto with commit the changes logically - meaning changes by changes. This could mean that we would need to add a button or something in the codebase on a specific code block of changes that the user can click on to commit that part of the change.
   - Next is contextual understanding. Commiting on a global scopped.
+
+
