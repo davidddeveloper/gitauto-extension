@@ -10,10 +10,11 @@ interface User {
 }
 
 function connect(context: vscode.ExtensionContext) {
+    vscode.window.showInformationMessage("Hello World!")
     vscode.window.showInputBox({ prompt: 'Enter your email' }).then(email => {
         vscode.window.showInputBox({ prompt: 'Enter your password', password: true }).then(password => {
             if (email && password) {
-                fetch('https://miniature-space-parakeet-q7q69q4q5jpqh6pq-8080.app.github.dev/gitauto/connect', {
+                fetch('https://gitauto.davidconteh.engineer/connect', {
                     method: 'GET',
                     headers: { 'Authorization': `Bearer ${btoa(email + ':' + password)}` }
                 })
@@ -21,9 +22,9 @@ function connect(context: vscode.ExtensionContext) {
                 .then(data => {
                     if (data.token) {
                         context.globalState.update('jwtToken', data.token);
-                        fetch('https://miniature-space-parakeet-q7q69q4q5jpqh6pq-8080.app.github.dev/gitauto/users/me', {
+                        fetch('https://gitauto.davidconteh.engineer/users/me', {
                             method: 'GET',
-                            headers: { 'Authorization': `Bearer ${data.token}` }
+                            headers: { 'Authorization': data.token }
                         })
                         .then(response => response.json() as Promise<User>)
                         .then(user => {

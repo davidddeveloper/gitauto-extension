@@ -33,7 +33,7 @@ function generateCommit(context: vscode.ExtensionContext) {
         // Get the diff for each specific file
         repo.diffWithHEAD(fileName).then((fileDiff: string) => {
             vscode.window.showErrorMessage(`fileDiff. ${fileDiff}`);
-            fetch('https://miniature-space-parakeet-q7q69q4q5jpqh6pq-8080.app.github.dev/gitauto/generate-commit-msg', {
+            fetch('https://gitauto.davidconteh.engineer/generate-commit-msg', {
                 method: 'POST',
                 headers: { 
                     'X-Token': `${token}`,
