@@ -49,7 +49,13 @@ function generateCommit(context: vscode.ExtensionContext) {
             })
             .then(data => {
                 if (data.message) {
-                    vscode.window.showInformationMessage('Commit message generated successfully!', data.message);
+                    vscode.window.showInformationMessage(`Commit message generated successfully!`, 'Copy').then(selection => {
+                        if (selection === 'Copy') {
+                            // Copy the message to clipboard
+                            vscode.env.clipboard.writeText(data.message);
+                            vscode.window.showInformationMessage('Commit message copied to clipboard!');
+                        }
+                    });
 
                     // TODO:
                     // 1. Copy commit message to clipboard

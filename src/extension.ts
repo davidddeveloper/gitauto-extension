@@ -24,7 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
 		generateCommit(context);
 	});
 
-	let push = vscode.commands.registerCommand('gitauto.push', () => {
+	let pushCommand = vscode.commands.registerCommand('gitauto.gitPush', () => {
 		generateCommit(context);
 		gitPush(context);
 	});
@@ -35,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(login);
 	context.subscriptions.push(generateCommitCommand);
-	context.subscriptions.push(gitPush);
+	context.subscriptions.push(pushCommand);
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "gitauto" is now active!');

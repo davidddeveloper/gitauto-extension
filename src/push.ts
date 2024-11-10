@@ -23,7 +23,7 @@ function gitPush(context: vscode.ExtensionContext) {
         return;
     }
 
-    repo.push({ force: true }).then(() => {
+    repo.push().then(() => {
         vscode.window.showInformationMessage('Pushed successfully!');
     })
     .catch(() => {
