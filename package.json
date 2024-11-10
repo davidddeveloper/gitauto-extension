@@ -2,6 +2,7 @@
   "name": "gitauto",
   "displayName": "gitauto",
   "publisher": "davidddeveloper",
+  "icon":"./images/gitauto-icon.jpg",
   "repository": {
     "type": "git",
     "url": "https://github.com/davidddeveloper/gitauto-extension.git"
